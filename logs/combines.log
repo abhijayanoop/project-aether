@@ -2,3 +2,7 @@
 {"level":"info","message":"Server running on port 5000","service":"aether-study-bot-api","timestamp":"2025-11-02 20:01:49"}
 {"level":"info","message":"Environment: development","service":"aether-study-bot-api","timestamp":"2025-11-02 20:01:49"}
 {"level":"info","message":"Health check: http://localhost:5000/health","service":"aether-study-bot-api","timestamp":"2025-11-02 20:01:49"}
+{"level":"info","message":"MongoDB connected successfully","service":"aether-study-bot-api","timestamp":"2025-11-02 20:03:33"}
+{"level":"info","message":"Server running on port 5000","service":"aether-study-bot-api","timestamp":"2025-11-02 20:03:33"}
+{"level":"info","message":"Environment: development","service":"aether-study-bot-api","timestamp":"2025-11-02 20:03:33"}
+{"level":"info","message":"Health check: http://localhost:5000/health","service":"aether-study-bot-api","timestamp":"2025-11-02 20:03:33"}

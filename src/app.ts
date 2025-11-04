@@ -5,6 +5,7 @@ import { env } from './config/environment';
 import morgan from 'morgan';
 import logger from './config/logger';
 import { errorHandler, notFoundHandler } from './middleware/error.middleware';
+import routes from './index';
 
 const app: Application = express();
 
@@ -29,13 +30,7 @@ if (env.NODE_ENV === 'development') {
   );
 }
 
-app.get('/health', (_req, res) => {
-  res.json({
-    success: true,
-    message: 'Server running',
-    timestamp: new Date().toISOString(),
-  });
-});
+app.use('/api', routes);
 
 //error handlers
 app.use(errorHandler);

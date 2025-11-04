@@ -16,11 +16,13 @@ const envSchema = z.object({
   JWT_REFRESH_EXPIRES_IN: z.string().default('7d'),
 });
 
-const parseEnv = () => {
+type Env = z.infer<typeof envSchema>;
+
+const parseEnv = (): Env => {
   try {
     return envSchema.parse(process.env);
   } catch (error) {
-    console.log('Invalid environment variables', error);
+    console.error('Invalid environment variables', error);
     process.exit(1);
   }
 };

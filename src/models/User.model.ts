@@ -1,4 +1,6 @@
 import mongoose, { Document, Schema } from 'mongoose';
+import { hashPassword, verifyPassword } from '../utils/password.util';
+import bcrypt from 'bcryptjs';
 
 export interface IUser extends Document {
   email: string;
@@ -11,6 +13,7 @@ export interface IUser extends Document {
   };
   createdAt: Date;
   updatedAt: Date;
+  comparePassword(candidatePassword: string): Promise<Boolean>;
 }
 
 const UserSchema = new Schema<IUser>(
@@ -55,5 +58,35 @@ const UserSchema = new Schema<IUser>(
 );
 
 UserSchema.index({ email: 1 });
+
+UserSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) return next();
+
+  try {
+    this.password = await hashPassword(this.password);
+    next();
+  } catch (error: any) {
+    next();
+  }
+});
+
+UserSchema.methods.comparePassword = async function (
+  candidatePassword: string
+): Promise<boolean> {
+  if (!this.password) {
+    console.error('Password field is undefined in comparePassword');
+    throw new Error('Password field not selected');
+  }
+
+  return await verifyPassword(candidatePassword, this.password);
+};
+
+// delete password from json output
+UserSchema.set('toJSON', {
+  transform: function (doc, ret) {
+    delete ret.password;
+    return ret;
+  },
+});
 
 export const User = mongoose.model<IUser>('User', UserSchema);

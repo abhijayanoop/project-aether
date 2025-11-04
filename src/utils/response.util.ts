@@ -5,8 +5,8 @@ export class ResponseUtil {
   static success<T>(
     res: Response,
     data?: T,
-    statusCode: number = 200,
-    message?: string
+    message?: string,
+    statusCode: number = 200
   ) {
     const response: ApiResponse<T> = { success: true, data, message };
     return res.status(statusCode).json(response);
@@ -15,8 +15,8 @@ export class ResponseUtil {
   static error<T>(
     res: Response,
     data?: T,
-    message?: string,
-    statusCode: number = 500
+    statusCode: number = 500,
+    message?: string
   ) {
     const response: ApiResponse<T> = { success: false, data, message };
     return res.status(statusCode).json(response);

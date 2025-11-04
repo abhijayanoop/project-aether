@@ -6,3 +6,30 @@
 {"level":"info","message":"Server running on port 5000","service":"aether-study-bot-api","timestamp":"2025-11-02 20:03:33"}
 {"level":"info","message":"Environment: development","service":"aether-study-bot-api","timestamp":"2025-11-02 20:03:33"}
 {"level":"info","message":"Health check: http://localhost:5000/health","service":"aether-study-bot-api","timestamp":"2025-11-02 20:03:33"}
+{"level":"info","message":"MongoDB connected successfully","service":"aether-study-bot-api","timestamp":"2025-11-04 10:17:57"}
+{"level":"info","message":"Server running on port 5000","service":"aether-study-bot-api","timestamp":"2025-11-04 10:17:57"}
+{"level":"info","message":"Environment: development","service":"aether-study-bot-api","timestamp":"2025-11-04 10:17:57"}
+{"level":"info","message":"Health check: http://localhost:5000/health","service":"aether-study-bot-api","timestamp":"2025-11-04 10:17:57"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'password')","method":"POST","service":"aether-study-bot-api","stack":"TypeError: Cannot read properties of undefined (reading 'password')\n    at model.UserSchema.methods.comparePassword (C:\\Users\\gauri\\Documents\\main-folder\\portfolio-projects\\project-aether\\src\\models\\User.model.ts:75:52)\n    at AuthService.loginUser (C:\\Users\\gauri\\Documents\\main-folder\\portfolio-projects\\project-aether\\src\\services\\auth.service.ts:48:40)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async login (C:\\Users\\gauri\\Documents\\main-folder\\portfolio-projects\\project-aether\\src\\controllers\\auth.controller.ts:12:20)","timestamp":"2025-11-04 10:18:47","url":"/api/auth/login"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'password')","method":"POST","service":"aether-study-bot-api","stack":"TypeError: Cannot read properties of undefined (reading 'password')\n    at model.UserSchema.methods.comparePassword (C:\\Users\\gauri\\Documents\\main-folder\\portfolio-projects\\project-aether\\src\\models\\User.model.ts:75:52)\n    at AuthService.loginUser (C:\\Users\\gauri\\Documents\\main-folder\\portfolio-projects\\project-aether\\src\\services\\auth.service.ts:48:40)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async login (C:\\Users\\gauri\\Documents\\main-folder\\portfolio-projects\\project-aether\\src\\controllers\\auth.controller.ts:12:20)","timestamp":"2025-11-04 10:22:34","url":"/api/auth/login"}
+{"level":"info","message":"MongoDB connected successfully","service":"aether-study-bot-api","timestamp":"2025-11-04 10:25:13"}
+{"level":"info","message":"Server running on port 5000","service":"aether-study-bot-api","timestamp":"2025-11-04 10:25:13"}
+{"level":"info","message":"Environment: development","service":"aether-study-bot-api","timestamp":"2025-11-04 10:25:13"}
+{"level":"info","message":"Health check: http://localhost:5000/health","service":"aether-study-bot-api","timestamp":"2025-11-04 10:25:13"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'password')","method":"POST","service":"aether-study-bot-api","stack":"TypeError: Cannot read properties of undefined (reading 'password')\n    at model.UserSchema.methods.comparePassword (C:\\Users\\gauri\\Documents\\main-folder\\portfolio-projects\\project-aether\\src\\models\\User.model.ts:75:52)\n    at AuthService.loginUser (C:\\Users\\gauri\\Documents\\main-folder\\portfolio-projects\\project-aether\\src\\services\\auth.service.ts:48:40)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async login (C:\\Users\\gauri\\Documents\\main-folder\\portfolio-projects\\project-aether\\src\\controllers\\auth.controller.ts:12:20)","timestamp":"2025-11-04 10:25:18","url":"/api/auth/login"}
+{"level":"info","message":"MongoDB connected successfully","service":"aether-study-bot-api","timestamp":"2025-11-04 10:29:13"}
+{"level":"info","message":"Server running on port 5000","service":"aether-study-bot-api","timestamp":"2025-11-04 10:29:13"}
+{"level":"info","message":"Environment: development","service":"aether-study-bot-api","timestamp":"2025-11-04 10:29:13"}
+{"level":"info","message":"Health check: http://localhost:5000/health","service":"aether-study-bot-api","timestamp":"2025-11-04 10:29:13"}
+{"level":"info","message":"MongoDB connected successfully","service":"aether-study-bot-api","timestamp":"2025-11-04 10:29:20"}
+{"level":"info","message":"Server running on port 5000","service":"aether-study-bot-api","timestamp":"2025-11-04 10:29:20"}
+{"level":"info","message":"Environment: development","service":"aether-study-bot-api","timestamp":"2025-11-04 10:29:20"}
+{"level":"info","message":"Health check: http://localhost:5000/health","service":"aether-study-bot-api","timestamp":"2025-11-04 10:29:20"}
+{"level":"info","message":"MongoDB connected successfully","service":"aether-study-bot-api","timestamp":"2025-11-04 10:29:49"}
+{"level":"info","message":"Server running on port 5000","service":"aether-study-bot-api","timestamp":"2025-11-04 10:29:49"}
+{"level":"info","message":"Environment: development","service":"aether-study-bot-api","timestamp":"2025-11-04 10:29:49"}
+{"level":"info","message":"Health check: http://localhost:5000/health","service":"aether-study-bot-api","timestamp":"2025-11-04 10:29:49"}
+{"level":"info","message":"MongoDB connected successfully","service":"aether-study-bot-api","timestamp":"2025-11-04 10:29:57"}
+{"level":"info","message":"Server running on port 5000","service":"aether-study-bot-api","timestamp":"2025-11-04 10:29:57"}
+{"level":"info","message":"Environment: development","service":"aether-study-bot-api","timestamp":"2025-11-04 10:29:57"}
+{"level":"info","message":"Health check: http://localhost:5000/health","service":"aether-study-bot-api","timestamp":"2025-11-04 10:29:57"}

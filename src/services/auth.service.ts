@@ -1,4 +1,9 @@
-import { AppError } from '../middleware/error.middleware';
+import {
+  AppError,
+  ConflictError,
+  NotFoundError,
+  UnauthorizedError,
+} from '../middleware/error.middleware';
 import { User } from '../models/User.model';
 import {
   generateAccessToken,
@@ -15,7 +20,7 @@ export class AuthService {
   async registerUser(data: RegisterInput) {
     const existingUser = await User.findOne({ email: data.email });
     if (existingUser) {
-      throw new AppError(409, 'User with this email address already exists');
+      throw new ConflictError('User with this email address already exists');
     }
 
     const user = await User.create({
@@ -42,12 +47,12 @@ export class AuthService {
   async loginUser(data: LoginInput) {
     const user = await User.findOne({ email: data.email }).select('+password');
     if (!user) {
-      throw new AppError(401, 'Invalid email or password');
+      throw new UnauthorizedError('Invalid email or password');
     }
 
     const isValidPassword = await user.comparePassword(data.password);
     if (!isValidPassword) {
-      throw new AppError(401, 'Invalid email or password');
+      throw new UnauthorizedError('Invalid email or password');
     }
 
     const accessToken = generateAccessToken(user._id.toString(), user.email);
@@ -68,12 +73,12 @@ export class AuthService {
   async refreshTokens(refreshToken: string) {
     const payload = verifyRefreshToken(refreshToken);
     if (!payload) {
-      throw new AppError(401, 'Invalid or expired refresh token');
+      throw new UnauthorizedError('Invalid or expired refresh token');
     }
 
     const user = await User.findOne({ email: payload.userId });
     if (!user) {
-      throw new AppError(404, 'User not found');
+      throw new NotFoundError('User not found');
     }
 
     const newAccessToken = await generateAccessToken(

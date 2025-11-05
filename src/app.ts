@@ -6,6 +6,10 @@ import morgan from 'morgan';
 import logger from './config/logger';
 import { errorHandler, notFoundHandler } from './middleware/error.middleware';
 import routes from './index';
+import {
+  sanitizeInput,
+  sanitizeMongoose,
+} from './middleware/sanitization.middleware';
 
 const app: Application = express();
 
@@ -29,6 +33,8 @@ if (env.NODE_ENV === 'development') {
     })
   );
 }
+
+app.use(sanitizeInput);
 
 app.use('/api', routes);
 

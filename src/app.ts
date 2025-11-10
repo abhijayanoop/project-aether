@@ -6,22 +6,33 @@ import morgan from 'morgan';
 import logger from './config/logger';
 import { errorHandler, notFoundHandler } from './middleware/error.middleware';
 import routes from './index';
-import {
-  sanitizeInput,
-  sanitizeMongoose,
-} from './middleware/sanitization.middleware';
+import { sanitizeInput } from './middleware/sanitization.middleware';
+import { securityHeaders } from './middleware/security.middleware';
+import { corsConfig } from './middleware/cors.middleware';
+import { globalLimitier } from './middleware/rateLimiter.middleware';
+import { securityMonitor } from './middleware/securityMonitor.middleware';
 
 const app: Application = express();
 
-app.use(helmet());
+app.set('trust proxy', 1);
 
-app.use(
-  cors({ origin: env.ALLOWED_ORIGINS?.split(',') || '*', credentials: true })
-);
+//1. security headers
+app.use(securityHeaders);
 
+// app.use(helmet());
+
+// app.use(
+//   cors({ origin: env.ALLOWED_ORIGINS?.split(',') || '*', credentials: true })
+// );
+
+//2. cors
+app.use(corsConfig);
+
+//3. body parsing
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+//4. logging
 if (env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 } else {
@@ -34,7 +45,22 @@ if (env.NODE_ENV === 'development') {
   );
 }
 
+//5. rate limiting
+app.use(globalLimitier);
+
+//6. security monitoring
+app.use(securityMonitor);
+
+//7. input santization
 app.use(sanitizeInput);
+
+app.get('/health', (_req, res) => {
+  res.json({
+    success: true,
+    message: 'Server is running',
+    timestamp: new Date().toISOString(),
+  });
+});
 
 app.use('/api', routes);
 

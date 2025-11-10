@@ -1,4 +1,8 @@
 import {
+  clearFailedAttempts,
+  recordFailedAttempts,
+} from '../middleware/bruteForce.middleware';
+import {
   AppError,
   ConflictError,
   NotFoundError,
@@ -47,13 +51,17 @@ export class AuthService {
   async loginUser(data: LoginInput) {
     const user = await User.findOne({ email: data.email }).select('+password');
     if (!user) {
+      await recordFailedAttempts(data.email);
       throw new UnauthorizedError('Invalid email or password');
     }
 
     const isValidPassword = await user.comparePassword(data.password);
     if (!isValidPassword) {
+      await recordFailedAttempts(data.email);
       throw new UnauthorizedError('Invalid email or password');
     }
+
+    await clearFailedAttempts(data.email);
 
     const accessToken = generateAccessToken(user._id.toString(), user.email);
     const refreshToken = generateRefreshToken(user._id.toString(), user.email);

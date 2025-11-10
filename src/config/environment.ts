@@ -14,6 +14,9 @@ const envSchema = z.object({
   JWT_EXPIRES_IN: z.string().default('24h'),
   JWT_REFRESH_SECRET: z.string(),
   JWT_REFRESH_EXPIRES_IN: z.string().default('7d'),
+  REDIS_HOST: z.string().default('localhost'),
+  REDIS_PORT: z.string().default('6379'),
+  REDIS_PASSWORD: z.string().optional(),
 });
 
 type Env = z.infer<typeof envSchema>;

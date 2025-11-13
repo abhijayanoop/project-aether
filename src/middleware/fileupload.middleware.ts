@@ -1,11 +1,14 @@
 import { NextFunction, Request, Response } from 'express';
 import multer from 'multer';
 import { ValidationError } from './error.middleware';
+import path from 'path';
+
+const uploadDir = path.join(process.cwd(), 'uploads');
 
 // Configure storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, '/uploads');
+    cb(null, uploadDir);
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
@@ -40,16 +43,20 @@ export const validateFileType = (allowedTypes: string[]) => {
 };
 
 export const validateFileSize = (maxSizeMB: number) => {
-    return (req: Request, res: Response, next: NextFunction){
-        if(!req.file){
-            return next(new ValidationError('No file uploaded'))
-        }
-
-        const maxSizeBytes = maxSizeMB * 1024 * 1024
-        if(req.file.size > maxSizeBytes){
-            return next(new ValidationError(`File size exceeds maximum size. Maximum size: ${maxSizeMB}MB`));
-        }
-
-        next()
+  return (req: Request, res: Response, next: NextFunction) => {
+    if (!req.file) {
+      return next(new ValidationError('No file uploaded'));
     }
-}
+
+    const maxSizeBytes = maxSizeMB * 1024 * 1024;
+    if (req.file.size > maxSizeBytes) {
+      return next(
+        new ValidationError(
+          `File size exceeds maximum size. Maximum size: ${maxSizeMB}MB`
+        )
+      );
+    }
+
+    next();
+  };
+};

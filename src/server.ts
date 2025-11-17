@@ -1,7 +1,10 @@
 import app from './app';
 import { connectDatabase } from './config/database';
 import { env } from './config/environment';
+import { testGeminiConnection } from './config/gemini';
 import logger from './config/logger';
+
+testGeminiConnection();
 
 const startServer = async () => {
   try {

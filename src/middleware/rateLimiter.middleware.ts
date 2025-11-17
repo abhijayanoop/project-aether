@@ -35,7 +35,7 @@ export const aiLimiter = rateLimit({
 
 export const uploadLimiter = rateLimit({
   store: createRedisStore(),
-  windowMs: 60 * 60 * 1000, // 1 hour
+  windowMs: 1 * 60 * 1000, // 1 hour
   max: 10,
   message: 'Upload limit reached, try again later',
 });

@@ -21,8 +21,8 @@ export class ContentService {
 
     await contentQueue.add('process-content', {
       contentId: content._id.toString(),
-      type,
-      sourceUrl,
+      type: type,
+      sourceUrl: sourceUrl,
     });
 
     return content;

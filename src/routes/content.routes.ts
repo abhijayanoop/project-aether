@@ -16,7 +16,7 @@ router.use(authenticate);
 
 router.post(
   '/pdf',
-  uploadLimiter,
+  // uploadLimiter,
   uploadConfig.single('file'),
   contentController.uploadPdf
 );

@@ -17,6 +17,8 @@ const envSchema = z.object({
   REDIS_HOST: z.string().default('localhost'),
   REDIS_PORT: z.string().default('6379'),
   REDIS_PASSWORD: z.string().optional(),
+  GEMINI_API_KEY: z.string().min(1, 'Gemini API key is required'),
+  GEMINI_MODEL: z.string().default('gemini-2.5-flash-lite'),
 });
 
 type Env = z.infer<typeof envSchema>;

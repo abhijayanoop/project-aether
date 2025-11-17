@@ -57,3 +57,19 @@ export type UpdateStudyMaterialInput = z.infer<
 export type GetStudyMaterialsQuery = z.infer<
   typeof getStudyMaterialsQuerySchema
 >;
+
+export const generateFlashcardsSchema = z.object({
+  count: z.number().min(1).max(20).optional().default(10),
+});
+
+export const generateQuizSchema = z.object({
+  count: z.number().min(1).max(10).optional().default(5),
+});
+
+export const generateSummarySchema = z.object({
+  type: z.enum(['short', 'detailed']).optional().default('short'),
+});
+
+export const contentIdSchema = z.object({
+  contentId: z.string().regex(/^[0-9a-fA-F]{24}$/, 'Invalid content ID'),
+});

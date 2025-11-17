@@ -1,11 +1,12 @@
-import logger from '../config/logger';
 import fs from 'fs';
-
-const pdfParse = require('pdf-parse');
+import logger from '../config/logger';
 
 export class PdfExtractorService {
   async extractText(filePath: string): Promise<string> {
     try {
+      // Dynamic import for CommonJS module
+      const pdfParse = (await import('pdf-parse')).default;
+
       const dataBuffer = fs.readFileSync(filePath);
       const data = await pdfParse(dataBuffer);
 

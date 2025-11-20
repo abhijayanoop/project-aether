@@ -1,85 +1,72 @@
-import mongoose, { Schema, Document, Types } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 export interface IStudyMaterial extends Document {
-  userId: Types.ObjectId;
+  userId: mongoose.Types.ObjectId;
+  contentId: mongoose.Types.ObjectId;
+  type: 'flashcard' | 'quiz' | 'summary' | 'concepts';
   title: string;
-  sources: Types.ObjectId[];
-  tableOfContents: Array<{
-    title: string;
-    level: number;
-    page?: number;
-  }>;
-  content: {
-    introduction: string;
-    sections: Array<{
-      title: string;
-      content: string;
-      sources: string[];
-    }>;
-    summary: string;
-  };
-  mindMap: Record<string, any>;
-  quizzes: Types.ObjectId[];
+  data: any;
   tags: string[];
+  folder?: string;
+  isPublic: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
 
-const StudyMaterialSchema = new Schema<IStudyMaterial>(
+const studyMaterialSchema = new Schema<IStudyMaterial>(
   {
     userId: {
       type: Schema.Types.ObjectId,
       ref: 'User',
       required: true,
+      index: true,
+    },
+    contentId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Content',
+      required: true,
+      index: true,
+    },
+    type: {
+      type: String,
+      enum: ['flashcard', 'quiz', 'summary', 'concepts'],
+      required: true,
+      index: true,
     },
     title: {
       type: String,
       required: true,
+      trim: true,
     },
-    sources: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Content',
-      },
-    ],
-    tableOfContents: [
-      {
-        title: String,
-        level: Number,
-        page: Number,
-      },
-    ],
-    content: {
-      introduction: String,
-      sections: [
-        {
-          title: String,
-          content: String,
-          sources: [String],
-        },
-      ],
-      summary: String,
+    data: {
+      type: Schema.Types.Mixed,
+      required: true,
     },
-    mindMap: Schema.Types.Mixed,
-    quizzes: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Quiz',
-      },
-    ],
-    tags: [String],
+    tags: {
+      type: [String],
+      default: [],
+      index: true,
+    },
+    folder: {
+      type: String,
+      trim: true,
+      index: true,
+    },
+    isPublic: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
   }
 );
 
-// Indexes
-StudyMaterialSchema.index({ userId: 1, createdAt: -1 });
-StudyMaterialSchema.index({ tags: 1 });
-StudyMaterialSchema.index({ title: 'text', 'content.introduction': 'text' });
+studyMaterialSchema.index({ userId: 1, type: 1, createdAt: -1 });
+studyMaterialSchema.index({ userId: 1, folder: 1 });
+studyMaterialSchema.index({ title: 'text' });
 
 export const StudyMaterial = mongoose.model<IStudyMaterial>(
   'StudyMaterial',
-  StudyMaterialSchema
+  studyMaterialSchema
 );

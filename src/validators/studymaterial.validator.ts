@@ -73,3 +73,54 @@ export const generateSummarySchema = z.object({
 export const contentIdSchema = z.object({
   contentId: z.string().regex(/^[0-9a-fA-F]{24}$/, 'Invalid content ID'),
 });
+
+export const saveFlashcardsSchema = z.object({
+  title: z.string().min(1),
+  flashcards: z.array(
+    z.object({
+      question: z.string(),
+      answer: z.string(),
+    })
+  ),
+  tags: z.array(z.string()).optional().default([]),
+  folder: z.string().optional(),
+});
+
+export const saveQuizSchema = z.object({
+  title: z.string().min(1),
+  questions: z.array(
+    z.object({
+      question: z.string(),
+      options: z.array(z.string()).length(4),
+      correctAnswer: z.number().min(0).max(3),
+      explanation: z.string(),
+    })
+  ),
+  tags: z.array(z.string()).optional().default([]),
+  folder: z.string().optional(),
+});
+
+export const saveSummarySchema = z.object({
+  title: z.string().min(1),
+  summary: z.string().min(1),
+  summaryType: z.enum(['short', 'detailed']),
+  keyConcepts: z.array(z.string()).optional().default([]),
+  tags: z.array(z.string()).optional().default([]),
+  folder: z.string().optional(),
+});
+
+export const updateMaterialSchema = z.object({
+  title: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+  folder: z.string().optional(),
+  data: z.any().optional(),
+});
+
+export const materialIdSchema = z.object({
+  id: z.string().regex(/^[0-9a-fA-F]{24}$/),
+});
+
+export const quizAttemptSchema = z.object({
+  score: z.number().min(0),
+  totalQuestions: z.number().min(1),
+});

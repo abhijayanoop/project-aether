@@ -46,4 +46,26 @@ router.post(
   studyMaterialController.extractKeyConcepts
 );
 
+// Save generated materials
+router.post(
+  '/:contentId/flashcards/save',
+  studyMaterialController.saveFlashcards
+);
+router.post('/:contentId/quiz/save', studyMaterialController.saveQuiz);
+router.post('/:contentId/summary/save', studyMaterialController.saveSummary);
+
+// Get materials
+router.get('/', studyMaterialController.getAllMaterials);
+router.get('/folders', studyMaterialController.getFolders);
+router.get('/tags', studyMaterialController.getTags);
+router.get('/stats', studyMaterialController.getStats);
+router.get('/:id', studyMaterialController.getMaterial);
+
+// Update/Delete
+router.put('/:id', studyMaterialController.updateMaterial);
+router.delete('/:id', studyMaterialController.deleteMaterial);
+
+// Quiz attempts
+router.post('/:id/attempt', studyMaterialController.recordAttempt);
+
 export default router;

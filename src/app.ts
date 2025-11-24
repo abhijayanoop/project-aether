@@ -1,6 +1,4 @@
 import express, { Application } from 'express';
-import helmet from 'helmet';
-import cors from 'cors';
 import { env } from './config/environment';
 import morgan from 'morgan';
 import logger from './config/logger';
@@ -11,6 +9,7 @@ import { securityHeaders } from './middleware/security.middleware';
 import { corsConfig } from './middleware/cors.middleware';
 import { globalLimitier } from './middleware/rateLimiter.middleware';
 import { securityMonitor } from './middleware/securityMonitor.middleware';
+import { analyticsMiddleware } from './middleware/analytics.middleware';
 
 const app: Application = express();
 
@@ -31,6 +30,8 @@ app.use(corsConfig);
 //3. body parsing
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+app.use(analyticsMiddleware);
 
 //4. logging
 if (env.NODE_ENV === 'development') {

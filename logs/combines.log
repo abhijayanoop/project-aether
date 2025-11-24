@@ -454,3 +454,11 @@
 {"level":"info","message":"Health check: http://localhost:5000/health","service":"aether-study-bot-api","timestamp":"2025-11-20 07:53:24"}
 {"level":"info","message":"✅ Gemini connected successfully","service":"aether-study-bot-api","timestamp":"2025-11-20 07:53:24"}
 {"level":"info","message":"Test response:","service":"aether-study-bot-api","timestamp":"2025-11-20 07:53:24"}
+{"code":"ECONNREFUSED","level":"error","message":"❌ Redis connection error:","service":"aether-study-bot-api","stack":"AggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1134:18)\n    at afterConnectMultiple (node:net:1715:7)","timestamp":"2025-11-24 10:55:48"}
+{"code":"ECONNREFUSED","level":"error","message":"❌ Redis connection error:","service":"aether-study-bot-api","stack":"AggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1134:18)\n    at afterConnectMultiple (node:net:1715:7)","timestamp":"2025-11-24 10:55:48"}
+{"code":"ECONNREFUSED","level":"error","message":"❌ Redis connection error:","service":"aether-study-bot-api","stack":"AggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1134:18)\n    at afterConnectMultiple (node:net:1715:7)","timestamp":"2025-11-24 10:55:49"}
+{"code":"ECONNREFUSED","level":"error","message":"❌ Redis connection error:","service":"aether-study-bot-api","stack":"AggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1134:18)\n    at afterConnectMultiple (node:net:1715:7)","timestamp":"2025-11-24 10:55:49"}
+{"level":"info","message":"🔧 Content processor worker started","service":"aether-study-bot-api","timestamp":"2025-11-24 10:55:49"}
+{"level":"info","message":"🔧 Worker process started","service":"aether-study-bot-api","timestamp":"2025-11-24 10:55:49"}
+{"level":"info","message":"MongoDB connected successfully","service":"aether-study-bot-api","timestamp":"2025-11-24 10:55:51"}
+{"level":"info","message":"SIGINT received, shutting down","service":"aether-study-bot-api","timestamp":"2025-11-24 10:56:28"}

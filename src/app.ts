@@ -10,6 +10,8 @@ import { corsConfig } from './middleware/cors.middleware';
 import { globalLimitier } from './middleware/rateLimiter.middleware';
 import { securityMonitor } from './middleware/securityMonitor.middleware';
 import { analyticsMiddleware } from './middleware/analytics.middleware';
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from './config/swagger';
 
 const app: Application = express();
 
@@ -62,6 +64,9 @@ app.get('/health', (_req, res) => {
     timestamp: new Date().toISOString(),
   });
 });
+
+//Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use('/api', routes);
 

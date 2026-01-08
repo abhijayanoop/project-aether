@@ -196,7 +196,11 @@ router.get('/', contentController.getUserContent);
  *       404:
  *         description: Content not found
  */
-router.get('/:id', validate(contentIdSchema), contentController.getContent);
+router.get(
+  '/:id',
+  validate(contentIdSchema, 'params'),
+  contentController.getContent
+);
 
 /**
  * @openapi
@@ -234,7 +238,7 @@ router.get('/:id', validate(contentIdSchema), contentController.getContent);
  */
 router.get(
   '/:id/status',
-  validate(contentIdSchema),
+  validate(contentIdSchema, 'params'),
   contentController.getStatus
 );
 
@@ -265,7 +269,7 @@ router.get(
  */
 router.delete(
   '/:id',
-  validate(contentIdSchema),
+  validate(contentIdSchema, 'params'),
   contentController.deleteContent
 );
 

@@ -20,7 +20,7 @@ export const authenticate = async (
       throw new AppError(401, 'Invalid or expired token');
     }
 
-    const user = await User.findById(payload.userId);
+    const user = await User.findById(payload.id);
     if (!user) {
       throw new AppError(401, 'User not found');
     }

@@ -1,36 +1,26 @@
-// import jwt from 'jsonwebtoken';
 import jwt from 'jsonwebtoken';
 import { env } from '../config/environment';
 
-interface TokenPayload {
-  userId: string;
-  email: string;
-}
-
-export const generateAccessToken = (userId: string, email: string): string => {
-  const payload: TokenPayload = { userId, email };
-  return jwt.sign(payload, env.JWT_SECRET, { expiresIn: env.JWT_EXPIRES_IN });
+export const generateAccessToken = (userId: string): string => {
+  return jwt.sign({ id: userId }, env.JWT_SECRET, { expiresIn: '15m' });
 };
 
-export const generateRefreshToken = (userId: string, email: string): string => {
-  const payload: TokenPayload = { userId, email };
-  return jwt.sign(payload, env.JWT_REFRESH_SECRET, {
-    expiresIn: env.JWT_REFRESH_EXPIRES_IN,
-  });
+export const generateRefreshToken = (userId: string): string => {
+  return jwt.sign({ id: userId }, env.JWT_REFRESH_SECRET, { expiresIn: '7d' });
 };
 
-export const verifyAccessToken = (token: string): TokenPayload | null => {
+export const verifyAccessToken = (token: string): any => {
   try {
-    return jwt.verify(token, env.JWT_SECRET) as TokenPayload;
+    return jwt.verify(token, env.JWT_SECRET);
   } catch (error) {
-    return null;
+    throw new Error('Invalid or expired access token');
   }
 };
 
-export const verifyRefreshToken = (token: string): TokenPayload | null => {
+export const verifyRefreshToken = (token: string): any => {
   try {
-    return jwt.verify(token, env.JWT_REFRESH_SECRET) as TokenPayload;
+    return jwt.verify(token, env.JWT_REFRESH_SECRET);
   } catch (error) {
-    return null;
+    throw new Error('Invalid or expired refresh token');
   }
 };

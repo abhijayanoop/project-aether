@@ -32,14 +32,14 @@ export const getStudyMaterialsQuerySchema = z.object({
     .transform(Number)
     .refine((val) => val > 0, 'Page must be positive')
     .optional()
-    .default('1'),
+    .default(1),
   limit: z
     .string()
     .regex(/^\d+$/, 'Limit must be a number')
     .transform(Number)
     .refine((val) => val > 0 && val <= 100, 'Limit must be 1-100')
     .optional()
-    .default('10'),
+    .default(10),
   search: z.string().trim().optional(),
 });
 

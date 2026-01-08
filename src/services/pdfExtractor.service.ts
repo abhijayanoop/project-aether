@@ -1,26 +1,31 @@
-import fs from 'fs';
-import logger from '../config/logger';
+import pdfParse from 'pdf-parse';
 
-export class PdfExtractorService {
-  async extractText(filePath: string): Promise<string> {
+export class PDFExtractorService {
+  async extractText(buffer: Buffer): Promise<string> {
     try {
-      // Dynamic import for CommonJS module
-      const pdfParse = (await import('pdf-parse')).default;
-
-      const dataBuffer = fs.readFileSync(filePath);
-      const data = await pdfParse(dataBuffer);
-
-      logger.info('Pdf text extracted successfully', {
-        pages: data.numpages,
-        length: data.text.length,
-      });
-
+      // Handle both default and named exports
+      const parsePDF = (pdfParse as any).default || pdfParse;
+      const data = await parsePDF(buffer);
       return data.text;
-    } catch (error) {
-      logger.error('Failed to extract text', error);
-      throw new Error('Failed to extract PDF text');
+    } catch (error: any) {
+      throw new Error(`Failed to extract text from PDF: ${error.message}`);
+    }
+  }
+
+  async extractMetadata(buffer: Buffer): Promise<any> {
+    try {
+      const parsePDF = (pdfParse as any).default || pdfParse;
+      const data = await parsePDF(buffer);
+      return {
+        title: data.info?.Title || 'Untitled',
+        author: data.info?.Author || 'Unknown',
+        pages: data.numpages,
+        text: data.text,
+      };
+    } catch (error: any) {
+      throw new Error(`Failed to extract metadata from PDF: ${error.message}`);
     }
   }
 }
 
-export const pdfExtractorService = new PdfExtractorService();
+export default new PDFExtractorService();

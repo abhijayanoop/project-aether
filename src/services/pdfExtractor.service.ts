@@ -28,4 +28,4 @@ export class PDFExtractorService {
   }
 }
 
-export default new PDFExtractorService();
+export const pdfExtractorService = new PDFExtractorService();

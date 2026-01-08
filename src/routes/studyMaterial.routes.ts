@@ -49,8 +49,8 @@ router.use(authenticate);
  */
 router.post(
   '/:contentId/flashcards',
-  validate(contentIdSchema, 'params'),
-  validate(generateFlashcardsSchema, 'body'),
+  validate(contentIdSchema),
+  validate(generateFlashcardsSchema),
   studyMaterialController.generateFlashcards
 );
 
@@ -88,8 +88,8 @@ router.post(
  */
 router.post(
   '/:contentId/quiz',
-  validate(contentIdSchema, 'params'),
-  validate(generateQuizSchema, 'body'),
+  validate(contentIdSchema),
+  validate(generateQuizSchema),
   studyMaterialController.generateQuiz
 );
 
@@ -127,8 +127,8 @@ router.post(
  */
 router.post(
   '/:contentId/summary',
-  validate(contentIdSchema, 'params'),
-  validate(generateSummarySchema, 'body'),
+  validate(contentIdSchema),
+  validate(generateSummarySchema),
   studyMaterialController.generateSummary
 );
 
@@ -157,7 +157,7 @@ router.post(
  */
 router.post(
   '/:contentId/concepts',
-  validate(contentIdSchema, 'params'),
+  validate(contentIdSchema),
   studyMaterialController.extractKeyConcepts
 );
 

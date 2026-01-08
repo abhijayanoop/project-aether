@@ -33,8 +33,8 @@ export class AuthService {
       name: data.name,
     });
 
-    const accessToken = generateAccessToken(user._id.toString(), user.email);
-    const refreshToken = generateRefreshToken(user._id.toString(), user.email);
+    const accessToken = generateAccessToken(user._id.toString());
+    const refreshToken = generateRefreshToken(user._id.toString());
 
     return {
       user: {
@@ -63,8 +63,8 @@ export class AuthService {
 
     await clearFailedAttempts(data.email);
 
-    const accessToken = generateAccessToken(user._id.toString(), user.email);
-    const refreshToken = generateRefreshToken(user._id.toString(), user.email);
+    const accessToken = generateAccessToken(user._id.toString());
+    const refreshToken = generateRefreshToken(user._id.toString());
 
     return {
       user: {
@@ -89,14 +89,8 @@ export class AuthService {
       throw new NotFoundError('User not found');
     }
 
-    const newAccessToken = await generateAccessToken(
-      user._id.toString(),
-      user.email
-    );
-    const newRefreshToken = await generateRefreshToken(
-      user._id.toString(),
-      user.email
-    );
+    const newAccessToken = await generateAccessToken(user._id.toString());
+    const newRefreshToken = await generateRefreshToken(user._id.toString());
 
     return {
       accessToken: newAccessToken,

@@ -4,8 +4,8 @@ import logger from './logger';
 
 const contentQueue = new Queue('content-processing', {
   redis: {
-    port: env.REDIS_PORT,
-    host: env.REDIS_HOST,
+    port: parseInt(env.REDIS_PORT || '6379'),
+    host: env.REDIS_HOST || 'localhost',
     password: env.REDIS_PASSWORD || undefined,
   },
   defaultJobOptions: {

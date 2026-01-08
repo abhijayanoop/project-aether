@@ -55,7 +55,7 @@ const router = Router();
  */
 router.post(
   '/register',
-  authLimiter,
+  // authLimiter,
   validate(registerSchema),
   authController.register
 );
@@ -97,7 +97,7 @@ router.post(
  *       401:
  *         description: Invalid credentials
  */
-router.post('/login', authLimiter, validate(loginSchema), authController.login);
+router.post('/login', validate(loginSchema), authController.login);
 
 /**
  * @openapi

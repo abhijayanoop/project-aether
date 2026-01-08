@@ -1,0 +1,493 @@
+{
+  "info": {
+    "_postman_id": "39167940-82bf-46f0-bd60-112931eeeaa9",
+    "name": "assessment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "addJob",
+      "id": "ff016a88-db73-409d-a261-294f706fdeba",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"userId\":\"123\",\n    \"jobTitle\": \"Specialist Programmer\",\n    \"jobURL\":\"www.example.com\",\n    \"companyName\":\"Infosys\",\n    \"skills\":[],\n    \"jobDescription\":\"Job Description- Power Programmers - Specialist Programmer,Infosys has designed the Power Programmers career track for polyglots who are passionate about programming and want to do more than programming as usual, who will be working on emergingand next-gen technologies. In this role, you will build platforms, marketplaces, innovative solutions, contribute and develop open software. will collaborate with some of the best talents inthe industry to create and implement innovative high quality programming solutions. You will be part of a learning culture, where teamwork and collaboration are encouraged, excellence is rewarded, and diversity is respected and valued. Technology Focus Areas - Frontier Engineering • Exponential Engineering [Greenfield, Brownfield, Platforms] • AI &amp; Agentic Engineering [Cloud AI Platforms, Open Source, S4HANA, Salesforce] • Software Resiliency Engineering [Experts across Enterprise stack] • Forward Deployed Engineering [Services &amp; Industry Stack] 1. Specialist Programmer – Level 1, you would • Develop full-stack applications using modern frameworks and best practices. • Apply AI in software engineering to enhance productivity and quality. • Work collaboratively with dynamic teams to build software applications using a predictable Agile DevSecOps model. • Leverage cloud platforms, DevOps, and AI tools throughout the development lifecycle. • Deliver innovation in chosen technologies, driving impactful solutions. • Contribute to open-source projects to build community engagement and technical Visibility. 2. Specialist Programmer – Level 2. In addition to Level 1, you would • Take on more complex challenges— develop scalable systems and solve advanced technical problems. • Provide technical guidance to team members and apply deep technology-specific knowledge to real-world projects. • Develop as an AI Master, contributing to the creation of Proof of Concepts (PoCs) and Minimum Viable Products (MVPs).• Drive innovation through open-source contributions, publishing white papers, and fostering a culture of experimentation. 3. Specialist Programmer – Level 3. In addition to Level 2, you would • Collaborate across teams to guide technical direction and lead experimentation with emerging technologies. • Develop as a Forward Deployed Engineer (FDE), working closely with clients and internal stakeholders. • Design and develop enterprise-grade platforms that scale across industries. • Play a key role in strategic technology initiatives, influencing architecture and innovation. • Contribute to AI/ML innovation, including building Small Language Models (SLMs) and advanced algorithms. • Engage actively in open-source communities, publish white papers, and drive patentable innovations. Additional Competencies • Strong analytical and problem-solving skills to tackle complex technical challenges. • Effective collaboration and communication skills for cross-functional teamwork. • Demonstrated consistency in competitive coding platforms (e.g., HackerRank, CodeChef, LeetCode). • Possession of industry-recognized external certifications, where applicable. • Active participation in technology forums and contributions to open-sourcecommunities.\",\n    \"industry\":\"Software\",\n    \"minSalary\": 675000,\n    \"maxSalary\": 2100000,\n    \"locations\":[\"Bengaluru\"]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/jobs/addJob",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "jobs",
+            "addJob"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "generateInterview",
+      "id": "f2551be5-36f0-48b7-b4b9-61b0576ffea2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"jobId\":\"692f01508a0ba44576674cc9\",\n    \"course\": \"B.Tech CSE AIML\",\n    \"specialization\": \"AI/ML\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/interview/generateInterview",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "interview",
+            "generateInterview"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "takeAssessment",
+      "id": "40882e57-cc6e-47d6-b8f1-ae34e18b5299",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"userId\":\"692f062237536f802614d45b\",\n     \"jobId\": \"692f01508a0ba44576674cc9\",\n    \"response\":{\n        \"itemId\":\"69310dcf3b01039835928999\",\n        \"item\": \"Which OOP principle is demonstrated by method overriding?\",\n        \"option\": \"Abstraction\",\n        \"skill\": \"Object-Oriented Programming\",\n        \"b_parameter\": 4.8\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:3000/assessment/takeAssessment?userId=692f062237536f802614d45b&jobId=692f01508a0ba44576674cc9",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "assessment",
+            "takeAssessment"
+          ],
+          "query": [
+            {
+              "key": "userId",
+              "value": "692f062237536f802614d45b"
+            },
+            {
+              "key": "jobId",
+              "value": "692f01508a0ba44576674cc9"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "5b804103-7fe6-42da-b037-0742eeb74b9b",
+          "name": "response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"userId\":\"692f062237536f802614d45b\",\n     \"jobId\": \"692f01508a0ba44576674cc9\",\n    \"response\":{\n        \"itemId\":\"69310dcf3b01039835928999\",\n        \"item\": \"Which OOP principle is demonstrated by method overriding?\",\n        \"option\": \"Abstraction\",\n        \"skill\": \"Object-Oriented Programming\",\n        \"b_parameter\": 4.8\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:3000/assessment/takeAssessment?userId=692f062237536f802614d45b&jobId=692f01508a0ba44576674cc9",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "assessment",
+                "takeAssessment"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "692f062237536f802614d45b"
+                },
+                {
+                  "key": "jobId",
+                  "value": "692f01508a0ba44576674cc9"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Access-Control-Allow-Credentials",
+              "value": "true"
+            },
+            {
+              "key": "Content-Security-Policy",
+              "value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "Cross-Origin-Embedder-Policy",
+              "value": "require-corp"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Resource-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "X-DNS-Prefetch-Control",
+              "value": "off"
+            },
+            {
+              "key": "Expect-CT",
+              "value": "max-age=0"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "X-Download-Options",
+              "value": "noopen"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Origin-Agent-Cluster",
+              "value": "?1"
+            },
+            {
+              "key": "X-Permitted-Cross-Domain-Policies",
+              "value": "none"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "655"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"28f-IKls0tmHq2o4y2mIStHemF3LStY\""
+            },
+            {
+              "key": "Vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 04 Dec 2025 04:47:47 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"_id\": \"69310dcf3b010398359289a1\",\n    \"jobId\": \"692f01508a0ba44576674cc9\",\n    \"course\": \"B.Tech CSE AIML\",\n    \"skill\": \"Model Evaluation\",\n    \"a_parameter\": 0,\n    \"b_parameter\": 5.8,\n    \"item\": \"What is the difference between precision and recall in classification metrics?\",\n    \"options\": [\n        \"No difference\",\n        \"Precision = TP/(TP+FP), Recall = TP/(TP+FN)\",\n        \"Precision = TP/(TP+FN), Recall = TP/(TP+FP)\",\n        \"Both measure the same thing\"\n    ],\n    \"correct_answer\": \"Precision = TP/(TP+FP), Recall = TP/(TP+FN)\",\n    \"justification\": \"Precision measures accuracy of positive predictions, while recall measures the ability to find all positive instances.\",\n    \"image_needed\": false,\n    \"svg_data\": \"\",\n    \"itemType\": \"MCQ\",\n    \"__v\": 0\n}"
+        }
+      ]
+    },
+    {
+      "name": "getSkillMap",
+      "id": "b1fa73a5-547f-4935-a5ff-bdd2f5dc6398",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:3000/skillmap/getSkillMap?course=B.Tech CSE AIML&clientId=1234",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "skillmap",
+            "getSkillMap"
+          ],
+          "query": [
+            {
+              "key": "course",
+              "value": "B.Tech CSE AIML"
+            },
+            {
+              "key": "clientId",
+              "value": "1234"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "uplaodCurriculum",
+      "id": "9eaa7d8a-5ae4-4c60-87cd-8ee615a9d9e0",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "localhost:3000/curriculum/upload?clientId=1234",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "curriculum",
+            "upload"
+          ],
+          "query": [
+            {
+              "key": "clientId",
+              "value": "1234"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getReport",
+      "id": "8401ec03-da5e-4418-8655-acfbe590bc4e",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:3000/assessment/getReport?userId=692f062237536f802614d45b&jobId=692f01508a0ba44576674cc9",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "assessment",
+            "getReport"
+          ],
+          "query": [
+            {
+              "key": "userId",
+              "value": "692f062237536f802614d45b"
+            },
+            {
+              "key": "jobId",
+              "value": "692f01508a0ba44576674cc9"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "0fa59163-047d-4c80-8932-b6d2d3a8e27f",
+          "name": "response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/assessment/getReport?userId=692f062237536f802614d45b&jobId=692f01508a0ba44576674cc9",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "assessment",
+                "getReport"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "692f062237536f802614d45b"
+                },
+                {
+                  "key": "jobId",
+                  "value": "692f01508a0ba44576674cc9"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Access-Control-Allow-Credentials",
+              "value": "true"
+            },
+            {
+              "key": "Content-Security-Policy",
+              "value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "Cross-Origin-Embedder-Policy",
+              "value": "require-corp"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Resource-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "X-DNS-Prefetch-Control",
+              "value": "off"
+            },
+            {
+              "key": "Expect-CT",
+              "value": "max-age=0"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "X-Download-Options",
+              "value": "noopen"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Origin-Agent-Cluster",
+              "value": "?1"
+            },
+            {
+              "key": "X-Permitted-Cross-Domain-Policies",
+              "value": "none"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"1bb9-fKnl/0Ku+24w0gO+KUAYg4adjYM\""
+            },
+            {
+              "key": "Vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "gzip"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 04 Dec 2025 05:02:03 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": 200,\n    \"response\": {\n        \"l1_readiness\": 65,\n        \"l2_readiness\": 45,\n        \"l3_readiness\": 25,\n        \"l4_readiness\": 15,\n        \"performance_trends_data\": {\n            \"Full-Stack Development\": {\n                \"basic\": {\n                    \"score\": 100,\n                    \"market_benchmark\": 85\n                },\n                \"medium\": {\n                    \"score\": 0,\n                    \"market_benchmark\": 70\n                },\n                \"advanced\": {\n                    \"score\": 0,\n                    \"market_benchmark\": 55\n                }\n            },\n            \"Data Structures\": {\n                \"basic\": {\n                    \"score\": 100,\n                    \"market_benchmark\": 90\n                },\n                \"medium\": {\n                    \"score\": 0,\n                    \"market_benchmark\": 75\n                },\n                \"advanced\": {\n                    \"score\": 0,\n                    \"market_benchmark\": 60\n                }\n            },\n            \"DevOps Practices\": {\n                \"basic\": {\n                    \"score\": 0,\n                    \"market_benchmark\": 75\n                },\n                \"medium\": {\n                    \"score\": 0,\n                    \"market_benchmark\": 65\n                },\n                \"advanced\": {\n                    \"score\": 0,\n                    \"market_benchmark\": 45\n                }\n            },\n            \"Object-Oriented Programming\": {\n                \"basic\": {\n                    \"score\": 0,\n                    \"market_benchmark\": 85\n                },\n                \"medium\": {\n                    \"score\": 0,\n                    \"market_benchmark\": 70\n                },\n                \"advanced\": {\n                    \"score\": 0,\n                    \"market_benchmark\": 55\n                }\n            }\n        },\n        \"detailed_analysis\": [\n            {\n                \"Full-Stack Development\": [\n                    {\n                        \"overall_analysis\": [\n                            \"Demonstrates basic understanding of web development stacks\",\n                            \"Correctly identified non-MEAN stack component\",\n                            \"Shows foundational knowledge but lacks depth in complex scenarios\"\n                        ],\n                        \"incorrect_response_analysis\": [\n                            \"No incorrect responses in this skill area\"\n                        ],\n                        \"recommendations\": [\n                            \"Practice building complete MEAN/MERN applications\",\n                            \"Focus on advanced full-stack concepts like microservices architecture\",\n                            \"Learn modern deployment strategies and containerization\"\n                        ]\n                    }\n                ]\n            },\n            {\n                \"Data Structures\": [\n                    {\n                        \"overall_analysis\": [\n                            \"Strong grasp of basic data structure operations\",\n                            \"Understands time complexity concepts well\",\n                            \"Good foundation for algorithmic thinking\"\n                        ],\n                        \"incorrect_response_analysis\": [\n                            \"No incorrect responses in this skill area\"\n                        ],\n                        \"recommendations\": [\n                            \"Practice more complex data structure problems\",\n                            \"Focus on advanced algorithms and their implementations\",\n                            \"Work on competitive programming challenges\"\n                        ]\n                    }\n                ]\n            },\n            {\n                \"DevOps Practices\": [\n                    {\n                        \"overall_analysis\": [\n                            \"Significant knowledge gap in DevOps practices\",\n                            \"Lacks understanding of CI/CD pipeline design\",\n                            \"Limited exposure to modern DevOps tools and methodologies\"\n                        ],\n                        \"incorrect_response_analysis\": [\n                            \"Provided overly simplistic answer 'Git Hub' for complex CI/CD pipeline design\",\n                            \"Shows confusion between version control and complete pipeline orchestration\",\n                            \"Lacks understanding of ML-specific deployment challenges\"\n                        ],\n                        \"recommendations\": [\n                            \"Learn comprehensive DevOps tools like Jenkins, GitLab CI, or GitHub Actions\",\n                            \"Study containerization with Docker and Kubernetes\",\n                            \"Practice designing end-to-end CI/CD pipelines\",\n                            \"Focus on MLOps practices for machine learning deployments\"\n                        ]\n                    }\n                ]\n            },\n            {\n                \"Object-Oriented Programming\": [\n                    {\n                        \"overall_analysis\": [\n                            \"Fundamental gap in OOP principles understanding\",\n                            \"Confusion between core OOP concepts\",\n                            \"Needs strengthening of theoretical foundations\"\n                        ],\n                        \"incorrect_response_analysis\": [\n                            \"Incorrectly identified 'Abstraction' instead of 'Polymorphism' for method overriding\",\n                            \"Shows conceptual confusion between different OOP principles\",\n                            \"Indicates need for deeper understanding of inheritance and polymorphism\"\n                        ],\n                        \"recommendations\": [\n                            \"Review and practice all four OOP principles thoroughly\",\n                            \"Implement practical examples of polymorphism and inheritance\",\n                            \"Study design patterns that demonstrate OOP principles\",\n                            \"Practice coding exercises focused on OOP concepts\"\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"data_driven_recommendation\": [\n            \"Focus on strengthening DevOps and OOP fundamentals before advancing to higher levels\",\n            \"Leverage strong data structures foundation to build algorithmic problem-solving skills\",\n            \"Expand full-stack knowledge to include modern frameworks and deployment practices\",\n            \"Consider structured learning path for DevOps practices given the role requirements\"\n        ],\n        \"cognitive_performance_profile\": {\n            \"Pattern Recognition\": 60,\n            \"Conceptual Understanding\": 50,\n            \"Application Skills\": 45,\n            \"Problem Decomposition\": 40,\n            \"Error Recovery\": 35,\n            \"Consistency\": 55\n        },\n        \"difficulty_performance_analysis\": {\n            \"performance_by_difficulty\": {\n                \"very_easy\": {\n                    \"range\": \"1.0-2.0\",\n                    \"success_rate\": 100,\n                    \"question_count\": 0,\n                    \"trend\": \"stable\"\n                },\n                \"easy\": {\n                    \"range\": \"2.1-4.0\",\n                    \"success_rate\": 100,\n                    \"question_count\": 1,\n                    \"trend\": \"positive\"\n                },\n                \"medium\": {\n                    \"range\": \"4.1-6.0\",\n                    \"success_rate\": 33,\n                    \"question_count\": 3,\n                    \"trend\": \"declining\"\n                },\n                \"hard\": {\n                    \"range\": \"6.1-8.0\",\n                    \"success_rate\": 0,\n                    \"question_count\": 0,\n                    \"trend\": \"unknown\"\n                },\n                \"very_hard\": {\n                    \"range\": \"8.1-10.0\",\n                    \"success_rate\": 0,\n                    \"question_count\": 0,\n                    \"trend\": \"unknown\"\n                }\n            },\n            \"statistical_metrics\": {\n                \"correlation_coefficient\": {\n                    \"value\": -0.65,\n                    \"explaination\": \"There's a moderate negative relationship between question difficulty and performance, meaning as questions get harder, success rate decreases\"\n                },\n                \"r_squared\": {\n                    \"value\": 0.42,\n                    \"explaination\": \"About 42% of performance variation can be explained by question difficulty, indicating other factors also influence performance\"\n                },\n                \"performance_variance\": {\n                    \"value\": 0.33,\n                    \"explaination\": \"Performance shows moderate inconsistency across different difficulty levels, suggesting uneven skill development\"\n                },\n                \"optimal_difficulty_zone\": {\n                    \"value\": \"3.0-4.5\",\n                    \"explaination\": \"The candidate performs best on questions with difficulty between 3.0-4.5, representing their comfort zone\"\n                },\n                \"learning_zone\": {\n                    \"value\": \"4.5-5.5\",\n                    \"explaination\": \"Questions in this range provide optimal challenge for learning without causing frustration\"\n                },\n                \"frustration_threshold\": {\n                    \"value\": \"6.0\",\n                    \"explaination\": \"Beyond difficulty level 6.0, the candidate shows significant performance drops indicating frustration point\"\n                },\n                \"consistency_index\": {\n                    \"value\": 0.55,\n                    \"explaination\": \"Moderate consistency in performance, with some variability across similar difficulty questions\"\n                },\n                \"adaptability_score\": {\n                    \"value\": 0.45,\n                    \"explaination\": \"Below average ability to adapt to increasing difficulty levels, suggesting need for gradual skill building\"\n                }\n            },\n            \"performance_insights\": {\n                \"zone_of_proximal_development\": {\n                    \"value\": \"4.0-5.5\",\n                    \"explaination\": \"The optimal learning range where the candidate can grow with appropriate support and practice\"\n                },\n                \"current_skill_ceiling\": {\n                    \"value\": \"5.3\",\n                    \"explaination\": \"The highest difficulty level the candidate can currently handle consistently\"\n                },\n                \"recommended_practice_range\": {\n                    \"value\": \"4.5-6.0\",\n                    \"explaination\": \"Focus practice in this range to build confidence and gradually increase capability\"\n                },\n                \"growth_trajectory\": \"Gradual upward trend possible with focused practice in medium difficulty range\",\n                \"key_improvement_areas\": [\n                    \"DevOps pipeline design\",\n                    \"OOP principle application\",\n                    \"Complex problem decomposition\"\n                ]\n            }\n        },\n        \"hiring_analytics\": {\n            \"can_be_hired\": \"YES\",\n            \"analysis\": \"Candidate shows strong foundational skills in data structures and basic full-stack development, indicating good learning potential. However, significant gaps in DevOps practices and OOP principles need addressing. For Level 1 Specialist Programmer role, the candidate demonstrates adequate basic programming knowledge but requires structured training in key areas. The strong performance in fundamental concepts suggests ability to learn and grow into the role with proper mentoring.\",\n            \"role_fit\": 65,\n            \"recommendations\": [\n                \"Hire for Level 1 position with 3-6 month structured training program\",\n                \"Assign mentor for DevOps and OOP skill development\",\n                \"Provide hands-on projects to strengthen practical application skills\",\n                \"Enroll in company training programs for CI/CD and modern development practices\",\n                \"Set clear learning milestones for progression to Level 2\"\n            ]\n        }\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "listInterview",
+      "id": "5eb34b7c-13de-4563-bb4f-ce67fa79df86",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getElcJobs",
+      "id": "8a853ae5-cec4-4e0a-987b-4e94b38c99a3",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "id": "9f882078-283b-4a41-a6a6-a0f91eb3ce3e",
+      "key": "baseURL",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}

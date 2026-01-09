@@ -25,9 +25,17 @@ contentQueue.process('process-content', async (job) => {
 
     // Extract based on type
     switch (type) {
-      case 'pdf':
-        extractedText = await pdfExtractorService.extractText(sourceUrl);
+      // case 'pdf':
+      //   extractedText = await pdfExtractorService.extractText(sourceUrl);
+      //   break;
+
+      case 'pdf': {
+        const fs = await import('fs');
+
+        const pdfBuffer = fs.readFileSync(sourceUrl); // ← Buffer
+        extractedText = await pdfExtractorService.extractText(pdfBuffer);
         break;
+      }
 
       case 'url':
         extractedText = await webScraperService.scrapeUrl(sourceUrl);

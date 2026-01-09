@@ -3,8 +3,13 @@ import pdfParse from 'pdf-parse';
 export class PDFExtractorService {
   async extractText(buffer: Buffer): Promise<string> {
     try {
-      // Handle both default and named exports
-      const parsePDF = (pdfParse as any).default || pdfParse;
+      const parsePDF =
+        typeof pdfParse === 'function' ? pdfParse : (pdfParse as any).default;
+
+      if (typeof parsePDF !== 'function') {
+        throw new Error('pdf-parse module not loaded correctly');
+      }
+
       const data = await parsePDF(buffer);
       return data.text;
     } catch (error: any) {
@@ -14,7 +19,13 @@ export class PDFExtractorService {
 
   async extractMetadata(buffer: Buffer): Promise<any> {
     try {
-      const parsePDF = (pdfParse as any).default || pdfParse;
+      const parsePDF =
+        typeof pdfParse === 'function' ? pdfParse : (pdfParse as any).default;
+
+      if (typeof parsePDF !== 'function') {
+        throw new Error('pdf-parse module not loaded correctly');
+      }
+
       const data = await parsePDF(buffer);
       return {
         title: data.info?.Title || 'Untitled',
